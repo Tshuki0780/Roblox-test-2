@@ -1,74 +1,86 @@
--- Place ID Check
-local placeId = game.PlaceId
-local First_Sea, Second_Sea, Third_Sea = false, false, false
 
-if placeId == 2753915549 then
-   First_Sea = true
-elseif placeId == 4442272183 then
-   Second_Sea = true
-elseif placeId == 7449423635 then
-   Third_Sea = true
-else
-   game:Shutdown()
-end
-
--- Anti-Ban
-local function AntiBan()
-   for _, descendant in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
-      if descendant:IsA("LocalScript") then
-         if descendant.Name == "General" or descendant.Name == "Shiftlock" or descendant.Name == "FallDamage" or
-            descendant.Name == "4444" or descendant.Name == "CamBob" or descendant.Name == "JumpCD" or
-            descendant.Name == "Looking" or descendant.Name == "Run" then
-            descendant:Destroy()
+how to get a key
+   FileName = "Jhil Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+   SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+   GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+   Key = {"https://pastebin.com/raw/uEJFNHRM"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+}
+})
+--Place Id Check
+   local L_82_ = game.PlaceId
+   if L_82_ == 2753915549 then
+      First_Sea = true;
+   elseif L_82_ == 4442272183 then
+      Second_Sea = true;
+   elseif L_82_ == 7449423635 then
+      Third_Sea = true;
+   else
+      game:Shutdown()
+   end;
+--------------------------------------------------------------------------------------------------------------------------------------------
+--Flag Player
+   function AntiBan()
+      for L_116_forvar0, L_117_forvar1 in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+         if L_117_forvar1:IsA("LocalScript") then
+            if L_117_forvar1.Name == "General" or L_117_forvar1.Name == "Shiftlock" or L_117_forvar1.Name == "FallDamage" or L_117_forvar1.Name == "4444" or L_117_forvar1.Name == "CamBob" or L_117_forvar1.Name == "JumpCD" or L_117_forvar1.Name == "Looking" or L_117_forvar1.Name == "Run" then
+               L_117_forvar1:Destroy()
+            end
+         end
+      end
+      for L_118_forvar0, L_119_forvar1 in pairs(game:GetService("Players").LocalPlayer.PlayerScripts:GetDescendants()) do
+         if L_119_forvar1:IsA("LocalScript") then
+            if L_119_forvar1.Name == "RobloxMotor6DBugFix" or L_119_forvar1.Name == "Clans" or L_119_forvar1.Name == "Codes" or L_119_forvar1.Name == "CustomForceField" or L_119_forvar1.Name == "MenuBloodSp" or L_119_forvar1.Name == "PlayerList" then
+               L_119_forvar1:Destroy()
+            end
          end
       end
    end
-
-   for _, descendant in pairs(game:GetService("Players").LocalPlayer.PlayerScripts:GetDescendants()) do
-      if descendant:IsA("LocalScript") then
-         if descendant.Name == "RobloxMotor6DBugFix" or descendant.Name == "Clans" or descendant.Name == "Codes" or
-            descendant.Name == "CustomForceField" or descendant.Name == "MenuBloodSp" or descendant.Name == "PlayerList" then
-            descendant:Destroy()
-         end
-      end
+   AntiBan()
+--------------------------------------------------------------------------------------------------------------------------------------------
+--Anti AFK
+   game:GetService("Players").LocalPlayer.Idled:connect(function()
+      game:GetService("VirtualUser"):Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+      wait(1)
+      game:GetService("VirtualUser"):Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+   end)
+------// BLOX FRUIT
+--// Sea world
+   First_Sea = false
+   Second_Sea = false
+   Third_Sea = false
+   local L_83_ = game.PlaceId
+   if L_83_ == 2753915549 then
+      First_Sea = true
+   elseif L_83_ == 4442272183 then
+      Second_Sea = true
+   elseif L_83_ == 7449423635 then
+      Third_Sea = true
    end
-end
-
-AntiBan()
-
--- Anti-AFK
-game:GetService("Players").LocalPlayer.Idled:Connect(function()
-game:GetService("VirtualUser"):Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
-   wait(1)
-   game:GetService("VirtualUser"):Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
-end)
-
--- Blox Fruit Quest Setup
-local function CheckLevel()
-   local level = game:GetService("Players").LocalPlayer.Data.Level.Value
-
-   if First_Sea then
-      if level >= 1 and level <= 9 then
-         Ms = "Bandit"
-         NameQuest = "BanditQuest1"
-         QuestLv = 1
-         NameMon = "Bandit"
-         CFrameQ = CFrame.new(1060.94, 16.46, 1547.78)
-         CFrameMon = CFrame.new(1038.55, 41.30, 1576.51)
-      elseif level >= 10 and level <= 14 then
-         Ms = "Monkey"
-         NameQuest = "JungleQuest"
-         QuestLv = 1
-         NameMon = "Monkey"
-         CFrameQ = CFrame.new(-1601.66, 36.85, 153.39)
-         CFrameMon = CFrame.new(-1448.14, 50.85, 63.61)
-      elseif level >= 15 and level <= 29 then
-         Ms = "Gorilla"
-         NameQuest = "JungleQuest"
-         QuestLv = 2
-         NameMon = "Gorilla"
-         CFrameQ = CFrame.new(-1601.66, 36.85, 153.39)
-         CFrameMon = CFrame.new(-1142.65, 40.46, -515.39)
+   --// Check Quest
+   function CheckLevel()
+      local L_120_ = game:GetService("Players").LocalPlayer.Data.Level.Value
+      if First_Sea then
+         if L_120_ == 1 or L_120_ <= 9 or SelectMonster == "Bandit" or SelectArea == '' then -- Bandit
+            Ms = "Bandit"
+            NameQuest = "BanditQuest1"
+            QuestLv = 1
+            NameMon = "Bandit"
+            CFrameQ = CFrame.new(1060.9383544922, 16.455066680908, 1547.7841796875)
+            CFrameMon = CFrame.new(1038.5533447266, 41.296249389648, 1576.5098876953)
+         elseif L_120_ == 10 or L_120_ <= 14 or SelectMonster == "Monkey" or SelectArea == 'Jungle' then -- Monkey
+            Ms = "Monkey"
+            NameQuest = "JungleQuest"
+            QuestLv = 1
+            NameMon = "Monkey"
+            CFrameQ = CFrame.new(- 1601.6553955078, 36.85213470459, 153.38809204102)
+            CFrameMon = CFrame.new(- 1448.1446533203, 50.851993560791, 63.60718536377)
+         elseif L_120_ == 15 or L_120_ <= 29 or SelectMonster == "Gorilla" or SelectArea == 'Jungle' then -- Gorilla
+            Ms = "Gorilla"
+            NameQuest = "JungleQuest"
+            QuestLv = 2
+            NameMon = "Gorilla"
+            CFrameQ = CFrame.new(- 1601.6553955078, 36.85213470459, 153.38809204102)
+            CFrameMon = CFrame.new(- 1142.6488037109, 40.462348937988, - 515.39227294922)
          elseif L_120_ == 30 or L_120_ <= 39 or SelectMonster == "Pirate" or SelectArea == 'Buggy' then -- Pirate
             Ms = "Pirate"
             NameQuest = "BuggyQuest1"
@@ -2639,7 +2651,8 @@ local function CheckLevel()
             end)
          end
       end
-   end) 
+   end)
+end
 spawn(function()
    while wait() do
       pcall(function()
@@ -2715,7 +2728,7 @@ spawn(function()
       end)
 
 UseCode()
-function UseCode(value)
+function UseCode(true)
    game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(true)
 end
 UseCode("Sub2Fer999")
